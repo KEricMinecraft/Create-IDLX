@@ -6,8 +6,8 @@
   "mixins": [
     "SingleLineDisplaySourceMixin",
     "DisplayLinkScreenMixin",
-    "source.CurrentFloorDisplaySourceMixin",
-    "source.TrainStatusDisplaySourceMixin"
+    "create.source.TrainStatusDisplaySourceMixin",
+    "create.source.CurrentFloorDisplaySourceMixin"
   ],
   "client": [],
   "server": []

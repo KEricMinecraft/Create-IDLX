@@ -1,4 +1,4 @@
-package com.vladiscrafter.createidlx;
+package com.vladiscrafter.createidlx.util;
 
 import com.simibubi.create.content.redstone.displayLink.DisplayLinkContext;
 import com.vladiscrafter.createidlx.config.CIDLXConfigs;

@@ -1,8 +1,9 @@
-package com.vladiscrafter.createidlx;
+package com.vladiscrafter.createidlx.util;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.vladiscrafter.createidlx.CreateIDLX;
 import net.createmod.catnip.gui.element.DelegatedStencilElement;
 import net.createmod.catnip.gui.element.ScreenElement;
 import net.createmod.catnip.theme.Color;

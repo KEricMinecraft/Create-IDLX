@@ -1,6 +1,5 @@
 package com.vladiscrafter.createidlx.mixin;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.google.common.collect.ImmutableList;
@@ -12,8 +11,7 @@ import com.simibubi.create.content.trains.display.FlapDisplayBlockEntity;
 import com.simibubi.create.content.trains.display.FlapDisplayLayout;
 import com.simibubi.create.content.trains.display.FlapDisplaySection;
 
-import com.vladiscrafter.createidlx.CreateIDLX;
-import com.vladiscrafter.createidlx.CreateIDLXMixinUtils;
+import com.vladiscrafter.createidlx.util.CreateIDLXMixinUtils;
 import com.vladiscrafter.createidlx.config.CIDLXConfigs;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
