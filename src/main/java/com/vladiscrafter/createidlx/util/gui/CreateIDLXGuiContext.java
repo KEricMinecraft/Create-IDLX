@@ -1,4 +1,4 @@
-package com.vladiscrafter.createidlx.util;
+package com.vladiscrafter.createidlx.util.gui;
 
 import com.simibubi.create.api.behaviour.display.DisplaySource;
 

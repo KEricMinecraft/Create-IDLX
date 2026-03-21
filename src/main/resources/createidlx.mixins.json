@@ -10,6 +10,9 @@
     "create.source.CurrentFloorDisplaySourceMixin",
     "create.source.TrainStatusDisplaySourceMixin"
   ],
-  "client": [],
+  "client": [
+    "create.AbstractSimiScreenMixin",
+    "create.AbstractSimiWidgetMixin"
+  ],
   "server": []
 }
