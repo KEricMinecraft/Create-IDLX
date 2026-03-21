@@ -3,9 +3,12 @@ package com.vladiscrafter.createidlx.util.widget;
 import java.util.Locale;
 
 import com.simibubi.create.AllKeys;
+import com.simibubi.create.AllSoundEvents;
 import com.simibubi.create.foundation.gui.widget.ScrollInput;
 import com.vladiscrafter.createidlx.CreateIDLX;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 
 public class TimerScrollInput extends ScrollInput {
@@ -63,6 +66,12 @@ public class TimerScrollInput extends ScrollInput {
         setState(nextTicks);
 
         if (currentTicks != nextTicks) {
+            if (!soundPlayed)
+                Minecraft.getInstance()
+                        .getSoundManager()
+                        .play(SimpleSoundInstance.forUI(AllSoundEvents.SCROLL_VALUE.getMainEvent(),
+                                (!AllKeys.ctrlDown() ? 1.5f : 0.9f) + 0.1f * (state - min) / (max - min)));
+            soundPlayed = true;
             onChanged();
             return true;
         }
