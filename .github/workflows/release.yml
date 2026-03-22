@@ -1,6 +1,21 @@
 name: Publish Release
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
+      inputs:
+        modrinth:
+          description: 'Upload to Modrinth'
+          required: true
+          type: boolean
+        curseforge:
+          description: 'Upload to CurseForge'
+          required: true
+          type: boolean
+        gh-releases:
+          description: 'Upload to GH Releases'
+          required: true
+          type: boolean
+
 
 permissions: write-all
 
@@ -33,10 +48,47 @@ jobs:
       - name: Build
         run: ./gradlew build
 
-      - name: Release
+      - name: Upload to Modrinth
+        if: ${{ inputs.modrinth }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: n0AbAYWj
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          files: build/libs/*.jar
+
+          name: 'Create: IDLX ${{ steps.version.outputs.version }} for Minecraft 1.21.1 & Create 6.0.X'
+          version: 'mc1.21.1-${{ steps.version.outputs.version }}'
+          version-type: release
+          changelog-file: RELEASE_NOTES.md
+
+          loaders: neoforge
+          game-versions: 1.21.1
+          java: 21
+
+      - name: Upload to CurseForge
+        if: ${{ inputs.curseforge }}
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          curseforge-id: 1456715
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: build/libs/*.jar
+
+          name: 'Create: IDLX ${{ steps.version.outputs.version }} for Minecraft 1.21.1 & Create 6.0.X'
+          version: 'mc1.21.1-${{ steps.version.outputs.version }}'
+          version-type: release
+          changelog-file: RELEASE_NOTES.md
+
+          loaders: neoforge
+          game-versions: 1.21.1
+          java: 21
+
+      - name: Upload to GitHub Releases
+        if: ${{ inputs.gh-releases }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.version.outputs.version }}
-          name: ${{ steps.version.outputs.version }}
+          tag_name: 'mc1.21.1-${{ steps.version.outputs.version }}'
+          name: 'mc1.21.1-${{ steps.version.outputs.version }}'
           files: build/libs/*.jar
           body_path: RELEASE_NOTES.md
