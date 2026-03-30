@@ -24,7 +24,6 @@
 - Fixed the **Target** widget tooltip (`Set To`) being unrendered in the Display Link interface ([#9](https://github.com/VladisCrafter/Create-IDLX/issues/9));
 - Fixed the **Current Floor Extended** display source displaying the description of the floor the elevator was _called to_, not the floor the elevator _has just passed_ (that eventually inspired the new **Elevator Target Floor** display source) ([#10](https://github.com/VladisCrafter/Create-IDLX/issues/10)).
 
-
 ---
 
 ## `1.3` - 2026-03-29 (29.03.2026)
