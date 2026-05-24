@@ -11,12 +11,9 @@ import com.simibubi.create.content.trains.display.FlapDisplayBlockEntity;
 import com.simibubi.create.content.trains.display.FlapDisplayLayout;
 import com.simibubi.create.content.trains.display.FlapDisplaySection;
 
-import com.simibubi.create.foundation.gui.ModularGuiLineBuilder;
-import com.simibubi.create.foundation.utility.CreateLang;
 import com.vladiscrafter.createidlx.content.displayLink.source.CountdownDisplaySource;
 import com.vladiscrafter.createidlx.util.CreateIDLXMixinUtils;
 import com.vladiscrafter.createidlx.config.CIDLXConfigs;
-import com.vladiscrafter.createidlx.util.gui.CreateIDLXGuiTooltipBuffer;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -53,16 +50,6 @@ public abstract class SingleLineDisplaySourceMixin {
     protected abstract String createidlx$invokeGetFlapDisplayLayoutName(DisplayLinkContext context);
 
     // ------ MODIFIERS & INJECTORS ------
-
-    @Inject(method = "addLabelingTextBox", at = @At("TAIL"))
-    @OnlyIn(Dist.CLIENT)
-    private void createidlx$cacheLabelingTextBoxTooltip(ModularGuiLineBuilder builder, CallbackInfo ci) {
-        CreateIDLXGuiTooltipBuffer.registerTooltip("LabelingTextBox", ImmutableList.of(
-                CreateLang.translateDirect("display_source.label")
-                        .withStyle(s -> s.withColor(0x5391E1)),
-                CreateLang.translateDirect("gui.schedule.lmb_edit")
-                        .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC)));
-    }
 
     @ModifyReturnValue(method = "provideText", at = @At("RETURN"))
     private List<MutableComponent> createidlx$modifyProvideText(List<MutableComponent> originalValue,

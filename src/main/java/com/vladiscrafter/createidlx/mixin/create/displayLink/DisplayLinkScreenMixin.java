@@ -134,22 +134,24 @@ public abstract class DisplayLinkScreenMixin extends AbstractSimiScreen {
     }
 
     @Inject(method = "initGathererSourceSubOptions", at = @At("TAIL"))
-    private void createidlx$injectGuideButtons(int i, CallbackInfo ci) {
+    private void createidlx$initGuideButtons(int i, CallbackInfo ci) {
         if (!createidlx$areGuideButtonsEnabled) return;
 
-        if (i < 0 || i >= sources.size()) return;
+        if (createidlx$placeholdersGuideButton != null) this.removeWidget(createidlx$placeholdersGuideButton);
+        if (createidlx$clipboardGuideButton != null) this.removeWidget(createidlx$clipboardGuideButton);
 
+        if (i < 0 || i >= sources.size()) return;
         DisplaySource source = sources.get(i);
-        if (!(source instanceof SingleLineDisplaySource)) return;
 
         createidlx$placeholdersGuideButton = new IconButton(guiLeft + 36, guiTop + 46, 16, 16, CreateIDLXIcons.placeholdersIcon);
+        createidlx$placeholdersGuideButton.visible = source instanceof SingleLineDisplaySource;
         if (createidlx$areGuideButtonRedirectsEnabled) createidlx$placeholdersGuideButton.withCallback((mX, mY) -> {
             onClose();
             PonderSceneOpener.openByIndex(AllBlocks.DISPLAY_LINK.asStack(), 2);
         });
         else createidlx$placeholdersGuideButton.active = false;
 
-        createidlx$clipboardGuideButton = new IconButton(guiLeft + 36, guiTop + (blockEntity.activeSource instanceof SingleLineDisplaySource ? 67 : 46), 16, 16, CreateIDLXIcons.clipboardIcon);
+        createidlx$clipboardGuideButton = new IconButton(guiLeft + 36, guiTop + (source instanceof SingleLineDisplaySource ? 67 : 46), 16, 16, CreateIDLXIcons.clipboardIcon);
         if (createidlx$areGuideButtonRedirectsEnabled) createidlx$clipboardGuideButton.withCallback((mX, mY) -> {
             onClose();
             PonderSceneOpener.openByIndex(AllBlocks.DISPLAY_LINK.asStack(), 3);

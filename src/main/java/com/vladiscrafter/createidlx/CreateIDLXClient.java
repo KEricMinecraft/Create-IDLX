@@ -31,7 +31,6 @@ public class CreateIDLXClient {
 
     private static void clientInit() {
         PonderIndex.addPlugin(new CIDLXPonderPlugin());
-
     }
 
     public static void onLoadComplete(FMLLoadCompleteEvent event) {

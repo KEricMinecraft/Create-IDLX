@@ -55,8 +55,7 @@ public class ElevatorMovementDirectionDisplaySource extends SingleLineDisplaySou
     public void initConfigurationWidgets(DisplayLinkContext context, ModularGuiLineBuilder builder,
                                          boolean isFirstLine) {
         super.initConfigurationWidgets(context, builder, isFirstLine);
-        if (isFirstLine)
-            return;
+        if (isFirstLine) return;
 
         builder.addSelectionScrollInput(0, 137, (ssi, l) -> {
             ssi.forOptions(CreateIDLX.translatedOptions("display_source.elevator_movement_direction",

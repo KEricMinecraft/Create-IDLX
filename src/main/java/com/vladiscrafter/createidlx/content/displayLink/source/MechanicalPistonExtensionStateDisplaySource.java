@@ -121,8 +121,7 @@ public class MechanicalPistonExtensionStateDisplaySource extends PercentOrProgre
     public void initConfigurationWidgets(DisplayLinkContext context, ModularGuiLineBuilder builder,
                                          boolean isFirstLine) {
         super.initConfigurationWidgets(context, builder, isFirstLine);
-        if (isFirstLine)
-            return;
+        if (isFirstLine) return;
 
         builder.addSelectionScrollInput(0, 116, (ssi, l) -> {
             ssi.forOptions(CreateIDLX.translatedOptions("display_source.mechanical_piston_extension_state",

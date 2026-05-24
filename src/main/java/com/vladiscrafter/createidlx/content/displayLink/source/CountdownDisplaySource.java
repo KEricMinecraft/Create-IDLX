@@ -6,9 +6,9 @@ import com.simibubi.create.content.redstone.displayLink.DisplayLinkContext;
 import com.simibubi.create.content.redstone.displayLink.source.SingleLineDisplaySource;
 import com.simibubi.create.content.redstone.displayLink.target.DisplayTargetStats;
 import com.simibubi.create.content.trains.display.FlapDisplaySection;
-
 import com.simibubi.create.foundation.gui.ModularGuiLineBuilder;
 import com.simibubi.create.foundation.utility.CreateLang;
+
 import com.vladiscrafter.createidlx.CreateIDLX;
 import com.vladiscrafter.createidlx.util.widget.ModularGuiLineBuilderExt;
 import net.minecraft.ChatFormatting;
@@ -63,7 +63,7 @@ public class CountdownDisplaySource extends SingleLineDisplaySource {
                     : Component.literal(String.format(Locale.ROOT, "%01d:%02d", minutes, seconds));
         } else {
             component = !overrideLabelOnFinish ? Component.literal(finishLabel) : Component.literal("0:00");
-            context.sourceConfig().putBoolean("IsCountdownFinished", true);;
+            context.sourceConfig().putBoolean("IsCountdownFinished", true);
         }
         return component;
     }

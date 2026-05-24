@@ -21,7 +21,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderHighlightEvent.Block;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = "createidlx", value = Dist.CLIENT)
 public class ClipboardDisplayLinkBlockOutlineHandler {
 
     @SubscribeEvent

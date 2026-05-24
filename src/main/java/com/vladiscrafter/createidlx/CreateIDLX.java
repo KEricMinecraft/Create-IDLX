@@ -3,7 +3,6 @@ package com.vladiscrafter.createidlx;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.vladiscrafter.createidlx.config.CIDLXConfigs;
 import com.vladiscrafter.createidlx.registry.CreateIDLXDisplaySources;
-import net.createmod.catnip.lang.LangBuilder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -49,8 +48,19 @@ public class CreateIDLX {
     }
 
     public static MutableComponent translate(String key, Object... args) {
-        Object[] args1 = LangBuilder.resolveBuilders(args);
+        Object[] args1 = resolveBuildersReflection(args);
         return Component.translatable(ID + "." + key, args1);
+    }
+
+    private static Object[] resolveBuildersReflection(Object... args) {
+        try {
+            Class<?> langBuilderClass = Class.forName("net.createmod.catnip.lang.LangBuilder");
+            var method = langBuilderClass.getDeclaredMethod("resolveBuilders", Object[].class);
+            return (Object[]) method.invoke(null, (Object) args);
+        } catch (Exception e) {
+            LOGGER.debug("LangBuilder not available, using args directly", e);
+            return args;
+        }
     }
 
     public static List<MutableComponent> translateMultiline(String key, int color, Object... args) {

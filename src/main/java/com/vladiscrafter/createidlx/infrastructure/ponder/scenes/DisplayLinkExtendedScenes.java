@@ -617,10 +617,10 @@ public class DisplayLinkExtendedScenes {
         BlockPos link10Pos = util.grid().at(3, 3, 1);
         Selection link10 = util.select().position(link10InitialPos);
 
-        ElementLink<WorldSectionElement> inputReplacementElement = scene.world().makeSectionIndependent(inputReplacement);
+        ElementLink<WorldSectionElement> inputReplacementElement = scene.world().showIndependentSection(inputReplacement, Direction.DOWN);
         scene.world().moveSection(inputReplacementElement, util.vector().of(0, -64, 0), 0);
         scene.world().hideIndependentSection(inputReplacementElement, Direction.DOWN);
-        ElementLink<WorldSectionElement> outputReplacementElement = scene.world().makeSectionIndependent(outputReplacement);
+        ElementLink<WorldSectionElement> outputReplacementElement = scene.world().showIndependentSection(outputReplacement, Direction.DOWN);
         scene.world().moveSection(outputReplacementElement, util.vector().of(0, -64, 0), 0);
         scene.world().hideIndependentSection(outputReplacementElement, Direction.DOWN);
 
