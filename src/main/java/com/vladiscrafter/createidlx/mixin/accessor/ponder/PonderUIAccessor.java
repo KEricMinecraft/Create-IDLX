@@ -1,4 +1,4 @@
-package com.vladiscrafter.createidlx.mixin.ponder;
+package com.vladiscrafter.createidlx.mixin.accessor.ponder;
 
 import net.createmod.catnip.animation.LerpedFloat;
 import net.createmod.ponder.foundation.PonderScene;
@@ -10,7 +10,12 @@ import java.util.List;
 
 @Mixin(PonderUI.class)
 public interface PonderUIAccessor {
-    @Accessor("scenes") List<PonderScene> createidlx$getScenes();
-    @Accessor("index") void createidlx$setIndex(int index);
-    @Accessor("lazyIndex") LerpedFloat createidlx$getLazyIndex();
+    @Accessor("scenes")
+    List<PonderScene> createidlx$getScenes();
+
+    @Accessor("index")
+    void createidlx$setIndex(int index);
+
+    @Accessor("lazyIndex")
+    LerpedFloat createidlx$getLazyIndex();
 }
